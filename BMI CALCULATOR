@@ -1,0 +1,45 @@
+def get_user_input():
+    while True:
+        try:
+            weight = float(input("Enter your weight (kg or lbs): "))
+            height = float(input("Enter your height (m or inches): "))
+            return weight, height
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+
+def calculate_bmi(weight, height, unit_system):
+    if unit_system == 'metric':
+        return weight / (height ** 2)
+    elif unit_system == 'imperial':
+        return (weight / (height ** 2)) * 703
+    else:
+        raise ValueError("Invalid unit system. Choose 'metric' or 'imperial'.")
+
+def categorize_health(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif 18.5 <= bmi < 25:
+        return "Normal weight"
+    elif 25 <= bmi < 30:
+        return "Overweight"
+    else:
+        return "Obesity"
+
+def display_results(bmi, health_category):
+    print(f"Your BMI is: {bmi:.2f}")
+    print(f"You are in the {health_category} category.")
+
+def bmi_calculator():
+    print("Welcome to the BMI Calculator!")
+
+    unit_system = input("Choose unit system (metric/imperial): ").lower()
+    
+    weight, height = get_user_input()
+
+    bmi = calculate_bmi(weight, height, unit_system)
+    health_category = categorize_health(bmi)
+
+    display_results(bmi, health_category)
+
+if __name__ == "__main__":
+    bmi_calculator()
