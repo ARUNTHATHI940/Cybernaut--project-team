@@ -1,0 +1,76 @@
+import time
+import random
+
+def introduction():
+    print("Welcome to the Ghost Adventure Game!")
+    time.sleep(1)
+    print("You find yourself in a haunted mansion.")
+    time.sleep(1)
+    print("Your goal is to explore the palace, encounter ghosts, and survive the night.")
+    time.sleep(1)
+
+def encounter_ghost():
+    ghost_names = ["Shadow ", "Spectral", "anabell", "nun"]
+    ghost_name = random.choice(ghost_names)
+    
+    print(f"\nYou encounter a {ghost_name}!")
+    time.sleep(1)
+    print("What do you want to do?")
+    print("1. Confront the ghost")
+    print("2. Run away")
+    
+    choice = input("Enter the number of your choice: ")
+    
+    if choice == '1':
+        print(f"\nYou bravely confronted the {ghost_name}. It disappears, leaving an eerie feeling.")
+    elif choice == '2':
+        print(f"\nYou tried to run away from the {ghost_name}, but it chases you. ohhhh! You escaped, but barely.")
+    else:
+        print("\nInvalid choice. The ghost attacks you. Game over!")
+
+def explore_room():
+    print("\nYou enter a dark room. It's filled with mysterious objects.")
+    time.sleep(1)
+    print("What do you want to do?")
+    print("1. Investigate the room")
+    print("2. Leave the room")
+    
+    choice = input("Enter the number of your choice: ")
+    
+    if choice == '1':
+        print("\nWhile investigating, you find an old diary that reveals the mansion's dark history.")
+        time.sleep(1)
+        encounter_ghost()
+    elif choice == '2':
+        print("\nYou decide to leave the room. Nothing unusual happens, for now.")
+    else:
+        print("\nInvalid choice. You stumble upon a hidden trap. Game over!")
+
+def main():
+    introduction()
+
+    while True:
+        print("\nYou have different choices:")
+        print("1. Explore a room")
+        print("2. Rest in a safe spot")
+        print("3. Quit the game")
+
+        choice = input("Enter the number of your choice: ")
+
+        if choice == '1':
+            explore_room()
+        elif choice == '2':
+            print("\nYou find a safe spot to rest. The night passes without any disturbances.")
+        elif choice == '3':
+            print("\nThanks for playing! Goodbye!")
+            break
+        else:
+            print("\nInvalid choice. Please enter a valid option.")
+
+        play_again = input("\nDo you want to continue exploring? (yes/no): ")
+        if play_again.lower() != 'yes':
+            print("\nThanks for playing! Goodbye!")
+            break
+
+if __name__ == "__main__":
+    main()
